@@ -1,17 +1,23 @@
-# React + Vite
+# Wolt Menu
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app that loads a real restaurant menu from the public Wolt consumer API and shows each dish as a card with its image, name and price.
 
-Currently, two official plugins are available:
+![Menu cards loaded from the Wolt API](screenshots/app.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How it works
 
-## React Compiler
+- [`src/components/Wolt.jsx`](src/components/Wolt.jsx) fetches the menu with Axios when the page loads.
+- The browser cannot call the Wolt API directly (CORS), so the Vite dev server forwards `/api` requests to `consumer-api.wolt.com` (see [`vite.config.js`](vite.config.js)).
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Built with
 
-## Expanding the ESLint configuration
+- React (`useState`, `useEffect`)
+- Axios
+- Vite dev-server proxy
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# api-task
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
